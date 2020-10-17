@@ -2,16 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>AUDIO-STREAM Test</title>
+    <title>Play a Youtube in background mode</title>
   </head>
   <body>
+
+    <h1>Youtube URL:</h1>
+    <input id="youtubeurl" name="youtubeurl" placeholder="Paste the Youtube URL here" />
+    <button onclick="playit()">Parse</button>
+
+    <h3>Player</h3>
     <audio controls>
       <source src="" type="audio/mpeg">
     </audio>
 
     <script>
-      const src = `${location.href}HQmmM_qwG4k`
-      document.querySelector('audio').src = src
+      function playit() {
+        // Sample https://www.youtube.com/watch?v=m24x22aY1aw
+        const url = document.getElementById("youtubeurl").value;
+        const id = url.substring(url.lastIndexOf('=') + 1);
+
+        const src = `${location.href}${id}`
+        document.querySelector('audio').src = src
+      }      
     </script>
   </body>
 </html>
